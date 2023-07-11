@@ -1,0 +1,3 @@
+[submodule "leetcode_env"]
+	path = leetcode_env
+	url = https://github.com/GammaTauAI/leetcode-hard-gym
