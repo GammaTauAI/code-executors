@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from typing import List
 
-from executor_types import ExecuteResult, Executor
-from executor_utils import to_jsonl
+from .executor_types import ExecuteResult, Executor
+from .executor_utils import to_jsonl
 from datetime import datetime
 
 class LeetExecutor(Executor):

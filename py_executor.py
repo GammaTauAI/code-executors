@@ -1,10 +1,10 @@
 import ast
 import astunparse
 
-from executor_utils import function_with_timeout
+from .executor_utils import function_with_timeout
 
 from typing import List
-from executor_types import ExecuteResult, Executor
+from .executor_types import ExecuteResult, Executor
 
 class PyExecutor(Executor):
     def execute(self, func: str, tests: List[str], timeout: int = 5) -> ExecuteResult:
