@@ -72,6 +72,10 @@ class LuaExecutor(Executor):
 
         probably should be written in a dataset-agnostic way but not now
         """
+        print(f"name: {name}")
+        print(f"func: {func}")
+        print(f"test: {test}")
+        raise NotImplementedError
         code = f"""{func}
 
 {test}
@@ -86,10 +90,3 @@ check({name})
         except Exception:
             return False
 
-
-if __name__ == "__main__":
-    pass
-    # Test the function
-    func = "def add(a, b):\n    while True:\n        x = 1\n    return a + b"
-    tests = ["assert add(1, 2) == 3", "assert add(1, 2) == 4"]
-    print(PyExecutor().execute(func, tests, timeout=1))

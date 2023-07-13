@@ -1,4 +1,4 @@
-from lua_executor import LuaExecutor
+from .lua_executor import LuaExecutor
 from .py_executor import PyExecutor
 from .rs_executor import RsExecutor
 from .executor_types import Executor
