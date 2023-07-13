@@ -1,3 +1,4 @@
+from lua_executor import LuaExecutor
 from .py_executor import PyExecutor
 from .rs_executor import RsExecutor
 from .executor_types import Executor
@@ -24,7 +25,7 @@ def leet_executor_factory(lang: str) -> Executor:
         pl = ProgrammingLanguage.RUST
         sf = RsSubmissionFormatter
     else:
-        raise ValueError(f"Invalid language for executor: {lang}")
+        raise ValueError(f"Invalid language for leetcode executor: {lang}")
 
     return LeetExecutor(pl, base_executor_factory(lang), sf)
 
@@ -34,5 +35,7 @@ def base_executor_factory(lang: str) -> Executor:
         return PyExecutor()
     elif lang == "rs" or lang == "rust":
         return RsExecutor()
+    elif lang == "lua":
+        return LuaExecutor()
     else:
         raise ValueError(f"Invalid language for executor: {lang}")
