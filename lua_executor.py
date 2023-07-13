@@ -72,21 +72,10 @@ class LuaExecutor(Executor):
 
         probably should be written in a dataset-agnostic way but not now
         """
-        print(f"name: {name}")
-        print(f"func: {func}")
-        print(f"test: {test}")
-        raise NotImplementedError
-        code = f"""{func}
-
-{test}
-
-check({name})
-    """
-        try:
-
-            function_with_timeout(exec, (code, globals()), timeout)
-
-            return True
-        except Exception:
-            return False
-
+        test = "\n".join(test.split("\n")[0:-2])
+        test += "\ntest_humaneval()"
+        test += "\nos.exit( lu.LuaUnit.run() )"
+        code = f"{func}\n{test}"
+        _, errs = exec_lua(code, timeout=timeout)
+        print(errs)
+        return errs == ""
