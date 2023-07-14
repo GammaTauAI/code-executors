@@ -40,6 +40,8 @@ class LuaExecutor(Executor):
             _, errs = exec_lua(code, timeout=timeout)
             # ex failed:
             # lua: /tmp/luaunit_test.lua:3: LuaUnit test FAILURE: expected: 2, actual: 1
+            # TODO: this logic is not 100% correct. instead, we should just look for "actual: x", we 
+            # don't care about expected.
             if errs:
                 is_passing = False
                 reason = ""
